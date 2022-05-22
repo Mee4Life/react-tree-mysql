@@ -1,0 +1,111 @@
+
+/* Inline #24 | http://localhost:3001/person */
+
+.IC-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+    align-items: center;
+  }
+  
+  /* Inline #25 | http://localhost:3001/person */
+  
+  .IC-iName {
+    direction: rtl;
+    padding: 4px 8px;
+  }
+  
+  .IC-action {
+    border: 1px solid;
+    padding: 2px 8px;
+  }
+  
+  .uRM-CJ {
+    margin-top: 32px;
+  }
+
+  
+
+
+/* Inline #24 | http://localhost:3001/person */
+
+.IC-success {
+    background-color: green;
+    color: white;
+    padding: 8px;
+    border-radius: 8px;
+  }
+  
+  .fa-clipboard-check {
+    padding: 0px 16px;
+  }
+
+  
+/* Inline #24 | http://localhost:3001/person */
+
+.IC-actions {
+    display: flex;
+  }
+  
+  /* Inline #21 | http://localhost:3001/person */
+  
+  .IC-success {
+	/* padding: 8px; */
+	padding: 8px 8px;
+	width: 250px;
+	font-size: 12px;
+	font-weight: bold;
+	margin: 32px auto 8px auto;
+}
+  
+  .IC-action {
+    cursor: pointer;
+  }
+  
+
+/* Inline #24 | http://localhost:3001/person */
+
+.iName {
+    direction: rtl;
+  }
+  
+
+
+/* Inline #24 | http://localhost:3001/person */
+
+.IC-wrg {
+    background-color: #5d3030;
+    color: #fff;
+    padding: 8px;
+    border-radius: 8px;
+    width: 250px;
+    margin: 8px auto 8px auto;
+    font-size: 12px;
+    font-weight: bold;
+  }
+  
+  .fa-exclamation-triangle {
+    padding: 2px 16px;
+  }
+  
+  
+.goM-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+/* Inline #21 | http://localhost:3001/person */
+
+.goM-wrapper {
+  flex-direction: row-reverse;
+}
+
+
+
+/* Inline #26 | http://localhost:3001/people */
+
+.IC-action {
+  margin: 0px 8px;
+  border-radius: 8px;
+}

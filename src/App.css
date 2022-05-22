@@ -1,0 +1,263 @@
+.app {
+  min-height: 100vh;
+  text-align: center;
+  letter-spacing: 1.3px;
+}
+
+.app-dark {
+  background-color: #141414;
+  color: white;
+}
+
+.dark-link {
+  color: white
+}
+
+.light-link {
+  color: black;
+}
+
+.link-dark {
+  color: white
+}
+
+.link-light {
+  color: black;
+}
+
+.link {
+  text-decoration: none;
+  cursor: pointer;
+  outline: none;
+}
+
+.spinner {
+  animation-name: rotate-center;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  font-size: 30px;
+  padding: 16px;
+}
+
+.spinnerV2 {
+  animation-name: rotate-center;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+}
+
+
+@keyframes rotate-center {
+  0% {
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+
+
+/* Inline #13 | http://192.168.43.160:3000/ */
+
+.\34 04-icon {}
+
+.\34 04 {}
+
+.\34 04 {
+  font-size: 50px;
+  margin: 60px;
+  font-family: 'Inconsolata', monospace;
+}
+
+.\34 04-icon {
+  margin-bottom: 60px;
+  display: inline;
+  width: 85px;
+  border-radius: 25px;
+  background-color: #e1e1e1;
+  margin: auto;
+  height: 100px;
+}
+
+.\34 04 {
+  display: inline-flex;
+  flex-direction: column;
+}
+
+.\34 04-icon {
+  margin: 60px auto;
+  display: inline-flex;
+  width: 100px;
+  justify-content: center;
+  align-items: center;
+  color: red;
+}
+
+
+
+
+/* Inline #23 | http://localhost:3000/nested/6037d3aa38bf156b6d535d24 */
+
+.d1-header {
+  width: 500px;
+}
+
+.d1-list-item {
+  width: 500px;
+  padding: 16px;
+}
+
+.d1-header {
+  padding-top: 8px;
+}
+
+.br02 {
+  display: flex;
+  justify-content: center;
+}
+
+
+/* Inline #4 | http://localhost:3000/nested/6037d3aa38bf156b6d535d24 */
+
+.d1-header {
+  /* padding-top: 8px; */
+  padding: 8px;
+  border: 1px solid black;
+}
+
+.d1-header {
+  /* width: 500px; */
+}
+
+.d1-list-item {
+  /* width: 500px; */
+}
+
+.br02 {
+  width: 500px;
+  margin: auto;
+}
+
+/* Inline #23 | http://localhost:3000/nested/6037d3aa38bf156b6d535d24 */
+
+.d1-child-wrapper.d1-child-wrapper-light.d1-child-wrapper-xl {
+  border: 1px solid black;
+  justify-content: center;
+  display: ;
+  text-align: center;
+  wid: ;
+  width: 100%;
+}
+
+
+
+
+
+
+.startLine {
+  width: 200px;
+  height: 1px;
+  margin: 16px;
+  background-color: black;
+  margin: auto;
+  margin-top: 32px;
+}
+
+.line1 {
+  margin: auto;
+  margin-top: 32px;
+  margin-bottom: 16px;
+}
+
+.btn1 {
+  padding: 4px 8px;
+  border: 1px solid;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn1-light:hover {
+  background-color: black;
+  color: white;
+}
+
+.btn1-dark:hover {
+  background-color: white;
+  color: black;
+}
+
+
+
+
+/* Inline #26 | http://3.120.11.152:8864/603179e9f4590514cd71431c */
+
+.qC8tN- {
+  padding: 4px;
+}
+
+.XWusL-time {
+  padding: 8px;
+}
+
+.qC8tN {
+  font-weight: bold;
+  font-family: 'Source Code Pro', monospace;
+}
+
+.parentW1 {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mDCcQ {
+  padding: 8px;
+}
+
+.JpN {
+  padding: 8px;
+}
+
+
+/* Inline #26 | http://localhost:3000/6037d3c138bf156b6d535d26 */
+
+.U7q{
+  line-height: 30px;
+}
+
+
+/* Inline #26 | http://3.120.11.152:8864/6016dddd378d0bc5d5bea020 */
+
+.time {
+  margin: 16px;
+}
+
+
+
+
+/* Inline #26 | http://localhost:3000/people */
+
+.fas.fa-trash {}
+
+/* Inline #27 | http://localhost:3000/people */
+
+
+.save-action {
+  color: #497a49;
+}
+
+.remove-action {
+  /* color: red; */
+  color: #712e2e;
+  
+}
+
+.link-action {}
+
+/* Inline #28 | http://localhost:3000/people */
+
+.link-action {
+  color: #53538f;
+}

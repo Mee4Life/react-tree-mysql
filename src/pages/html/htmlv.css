@@ -1,0 +1,31 @@
+
+/* Inline #26 | http://localhost:3001/html/6016dddd378d0bc5d5bea020 */
+
+.yFAmjB-actions.yFAmjB-actions-light.yFAmjB-actions-xl {
+    margin: 16px;
+  }
+  
+  .yFAmjB-action {
+    /* cursor: po''; */
+    margin: 16px;
+    color: white;
+    background-color: #131376;
+    padding: 4px 8px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  
+  /* Inline #27 | http://localhost:3001/html/6016dddd378d0bc5d5bea020 */
+  
+  .yFAmjB-counter {
+    margin: 0px 36px;
+    padding: 4px;
+    border-radius: 50px;
+    width: 20px;
+    display: inline-flex;
+    height: 20px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+  }
+  

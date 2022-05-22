@@ -1,0 +1,118 @@
+/* Inline #12 | http://localhost:3000/ */
+
+.login-input {
+    width: 150px;
+    margin: 0px 8px;
+    border-radius: 5px;
+    outline: none;
+    padding: 7px;
+    font-size: 14px;
+    letter-spacing: 1.8px;
+}
+
+.login-input-light {
+    border: 1px solid white;
+    color: white;
+}
+
+.login-input-dark {
+    border: 1px solid black;
+    background: none;
+    color: black;
+}
+
+.login-input-light {
+    background: none;
+}
+
+
+.login-submit {
+    padding: 4px;
+    cursor: pointer;
+    border-radius: 5px;
+    outline: none;
+}
+
+.login-submit:hover {
+    background: #49aa85;
+    color: white;
+}
+
+.login-spinner {
+    animation-name: rotate-center;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+}
+
+.error-container {
+    margin: 8px;
+    font-style: italic;
+    color: #cc2f2f;
+    font-size: 12px;
+}
+
+.login-register {
+    margin: 0px 16px;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+
+.login-form-container-sm {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-input-sm {
+    margin: 4px auto;
+}
+
+
+.login-form-wrapper-sm {
+    margin-top: 36px;
+}.login-input-light {
+	border: 1px solid #000;
+	color: #000;
+}
+
+.login-input-dark {
+	border: 1px solid #fff;
+	background: none;
+	color: #fff;
+}
+
+
+/* Inline #23 | http://localhost:3000/ */
+
+.login-submit-sm {
+    margin-top: 24px;
+  }
+  
+  .login-submit {
+    border: 1px solid;
+    display: inline-block;
+    width: 44px;
+    margin: auto;
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+  
+
+
+/* Inline #23 | http://localhost:3000/ */
+
+.login-submit-sm {
+    margin-top: 24px;
+  }
+  
+  .login-submit {
+    border: 1px solid;
+    width: 44px;
+    margin: auto;
+    margin-top: 24px;
+    margin-bottom: 24px;
+    padding: 4px 14px;
+  }
+  

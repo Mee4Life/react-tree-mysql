@@ -1,0 +1,138 @@
+ .navbar.navbar-light {
+     background-color: #fff;
+     color: black;
+ }
+
+ .navbar {
+     letter-spacing: 1.3px;
+     text-decoration: none;
+ }
+
+ .navbar.navbar-dark {
+     background-color: #202020;
+     color: #fff;
+ }
+
+ .navbar.navbar-light {
+     background-color: white;
+     color: black;
+ }
+
+ .brand {
+     font-size: 30px;
+     font-weight: bold;
+     padding: 24px 4px;
+ }
+
+ .action-icon {
+     padding: 0px 8px;
+     cursor: pointer;
+ }
+
+ .line-1 {
+     display: flex;
+     justify-content: space-around;
+     margin: 16px auto;
+     align-items: center;
+     flex-wrap: wrap;
+ }
+
+ .nav-actions {
+     padding: 16px;
+ }
+
+ .nav-links {
+     display: flex;
+     margin: 0px 32px;
+ }
+
+ .nav-link-light:hover {
+     background-color: black;
+     color: white;
+ }
+
+ .nav-link {
+     padding: 4px;
+     cursor: pointer;
+     border-radius: 5px;
+     margin: 0px 8px;
+     text-decoration: none;
+ }
+
+ .nav-link-dark:hover {
+     background-color: white;
+     color: black;
+ }
+
+ .nav-link-dark {
+     color: white;
+ }
+
+ .nav-link-light {
+     color: black;
+ }
+
+ .navbar-logout {
+     background-color: #571f1f;
+     border-radius: 5px;
+     font-weight: bold;
+     cursor: pointer;
+     padding: 4px 8px;
+     color: white;
+ }
+
+ .navbar-logout-sm {
+     margin-top: 36px;
+ }
+
+ .line-1-sm {
+     flex-direction: column;
+ }
+
+
+ /* Inline #19 | http://localhost:3000/ */
+
+ .nav-actions {
+     /* padding: 16px; */
+     padding: 8px;
+ }
+
+
+
+ /* Inline #26 | http://localhost:3001/people */
+
+ .nav-links-sm {
+     margin: 0px;
+     flex-wrap: wrap;
+     flex-direction: column;
+ }
+
+ .qC8tNgx8bx0dEav75JAWh {
+     font-weight: bold;
+     font-family: 'Source Code Pro', monospace;
+     margin: 18px;
+ }
+
+ .line-1 {
+    display: flex;
+    justify-content: center;
+    margin: 16px auto;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.navbar {
+    background-color: #1a1a1a;
+    color: #fff;
+    border-bottom: 1px solid;
+    padding-bottom: 30px;
+}
+
+.XWusL-time {
+    padding: 8px;
+    border-bottom: 1px solid;
+    padding-bottom: 30px;
+  }
+
+  .r6UF4Bl {
+    padding-top: 32px;
+  }

@@ -1,0 +1,27 @@
+.footer-julia {
+    font-size: 30px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 6.7px;
+    display: block;
+    text-align: center;
+}
+
+.me4life {
+    font-weight: bold;
+}
+
+
+.footer-julia {
+    padding: 16px;
+}
+
+.footer-copy {
+    padding: 11px;
+    padding-bottom: 40px;
+}
+
+.footer-line-1 {
+    padding: 40px;
+    border-top: 1px solid;
+}

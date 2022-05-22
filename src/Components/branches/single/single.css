@@ -1,0 +1,208 @@
+.branch-container {
+  padding: 12px;
+  direction: rtl;
+  width: 400px;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+.branch-actions {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 5px;
+  margin: 0px;
+  justify-content: flex-end;
+}
+
+
+.branch-action {
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 5px;
+  font-size: 14px;
+  margin: 0px 12px;
+}
+
+.checkbox {
+  cursor: pointer;
+  font-size: 30px;
+  margin-left: 12px;
+}
+
+.xEzOkLwAp64vOO2CGf-cW5I2ewdL {
+  margin-bottom: 20px;
+}
+
+
+
+
+/* Inline #24 | http://localhost:3000/603e177c38bf156b6d535e16 */
+
+.xEzOkLwAp64vOO2CGf-q2Qj {
+  border-radius: 15px;
+}
+
+.xEzOkLwAp64vOO2CGf-songName1 {
+  margin: 16px;
+  font-size: 16px;
+}
+
+.xEzOkLwAp64vOO2CGf-q2Qj {
+  padding: 8px;
+}
+
+
+
+
+/* Inline #23 | http://localhost:3000/60338cd284936b1929c64ece */
+
+.xEzOkLwAp64vOO2CGf-cW5I2ewdL {
+  padding: 4px;
+}
+
+.xEzOkLwAp64vOO2CGf-wqN7qIpfw {
+  width: 30px;
+  height: 30px;
+  border-radius: 500px;
+  border: 1px solid;
+  font-size: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.xEzOkLwAp64vOO2CGf-cW5I2ewdL {
+  align-items: center;
+}
+
+
+
+/* Inline #6 | http://localhost:3000/6015edc2378d0bc5d5be9fdb */
+
+.xEzOkLwAp64vOO2CGf-wqN7qIpfw {
+  display: inline-flex;
+}
+
+
+/* Inline #28 | http://localhost:3000/604a635a59e13047f9a70f0e */
+
+.xEzOkLwAp64vOO2CGf-submitBranchName {
+  padding: 4px 8px;
+  border-radius: 8px;
+  border: 1px solid;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.xEzOkLwAp64vOO2CGf-input {
+  display: flex;
+  align-items: center;
+}
+
+
+.newNameEdit {
+  direction: rtl;
+}
+
+
+/* Inline #28 | http://localhost:3000/604a635a59e13047f9a70f0e */
+
+.xEzOkLwAp64vOO2CGf-success-section {
+  text-align: center;
+  color: #1c4b1c;
+  font-weight: bold;
+  font-style: italic;
+}
+
+.xEzOkLwAp64vOO2CGf-group0 {
+  padding: 8px;
+}
+
+.xEzOkLwAp64vOO2CGf-selectedGroups {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.xEzOkLwAp64vOO2CGf-group0 {
+  background-color: gray;
+  margin: 8px;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+}
+
+
+/* Inline #28 | http://localhost:3000/6047a625a5a00979f5b3c43c */
+
+.xEzOkLwAp64vOO2CGf-form {
+  display: flex;
+  align-items: center;
+}
+
+.xEzOkLwAp64vOO2CGf-lRb4 {
+  border: 1px solid;
+  padding: 4px;
+  border-radius: 8px;
+  margin: 8px;
+  cursor: pointer;
+}
+
+
+
+/* Inline #28 | http://localhost:3000/6047a625a5a00979f5b3c43c */
+
+.xEzOkLwAp64vOO2CGf-result {
+  margin: 0px 8px 8px 8px;
+}
+
+/* Inline #29 | http://localhost:3000/6047a625a5a00979f5b3c43c */
+
+.GV {
+  padding: 4px;
+  cursor: pointer;
+}
+
+.move {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.move1 {
+  min-width: 20px;
+  min-height: 20px;
+  background-color: #000;
+  color: #fff;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  border-radius: 7px;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 4px 8px;
+  letter-spacing: 1.2px;
+  word-spacing: 3px;
+  font-weight: normal;
+}
+
+.move1-dark {
+  background-color: #fff;
+  color: #000;
+}
+
+.VaqSI {
+  margin: 8px;
+  border-radius: 5px;
+  border: 1px solid;
+  padding: 4px;
+  font-size: 16px;
+  outline: none;
+}
+
+.branch-name {
+  display: block;
+  padding: 16px;
+  cursor: pointer;
+}

@@ -1,0 +1,50 @@
+.right-panel-branch-item-1 {
+    padding: 4px 8px;
+    cursor: pointer;
+    margin: 4px;
+}
+
+.right-panel-branch-item-2 {
+    padding: 4px 8px;
+    cursor: pointer;
+    margin: 4px;
+}
+
+
+.branch-item-name {
+    display: block;
+    max-width: 250px;
+    margin: 8px auto 0px auto;
+}
+
+.branch-item-name-light {
+    text-decoration: none;
+    color: black;
+    outline: none;
+}
+
+.branch-item-name-dark {
+    text-decoration: none;
+    outline: none;
+    color: white;
+}
+
+.branch-item-origin {
+    display: block;
+    margin-bottom: 16px;
+    font-style: italic;
+    max-width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 12px;
+    text-decoration: none;
+    outline: none;
+}
+
+.branch-item-origin-light {
+    color: black;
+}
+
+.branch-item-origin-dark {
+    color: white;
+}

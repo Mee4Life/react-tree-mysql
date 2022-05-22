@@ -1,0 +1,36 @@
+.search-branch-container {
+    display: flex;
+    margin: 0px 16px;
+}
+
+.search-branch-q-input {
+    font-weight: bold;
+    width: 80%;
+    border: 0px;
+    outline: none;
+    margin: 0px 16px 0px 0px;
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-size: 14px;
+    direction: rtl;
+}
+
+.search-branch-q-input-dark {
+    color: white;
+    background-color: #141414;
+}
+
+.search-branch-q-search {
+    padding: 4px 8px;
+    cursor: pointer;
+}
+
+
+.search-branch-result-wrapper {
+    font-weight: normal;
+    margin-top: 16px;
+}
+
+.search-branch-q-search {
+    color: #2f2f74;
+}

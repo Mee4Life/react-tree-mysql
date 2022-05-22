@@ -1,0 +1,73 @@
+.modal-wrapper {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000cf;
+}
+
+.register-modal {
+    background-color: white;
+    color: black;
+    border-radius: 15px;
+}
+
+.register-modal-header {
+    display: flex;
+
+    align-items: center;
+    margin: 16px;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.register-modal-title {
+    font-size: 24px;
+    padding: 16px;
+    font-weight: bold;
+}
+
+.register-modal-close {
+    padding: 8px;
+    cursor: pointer;
+}
+
+.register-form {
+    display: flex;
+    flex-direction: column;
+    width: 150px;
+    margin: 16px auto;
+}
+
+.register-modal input {
+    margin: 4px;
+    border-radius: 4px;
+    border: 1px solid black;
+    padding: 4px;
+    outline: none;
+}
+
+.register-submit {
+    padding: 4px;
+    margin: 24px 8px;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.register-success-icon {
+    font-size: 56px;
+    color: green;
+    margin: 24px;
+}
+
+.register-success-msg {
+    margin-bottom: 68px;
+    margin-top: 24px;
+}

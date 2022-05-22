@@ -1,0 +1,355 @@
+.branches-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.branch-view-wrapper {
+    display: flex;
+    flex-direction: row-reverse;
+    max-width: 100vw;
+    flex-wrap: wrap;
+    max-width: 100vw;
+    flex-wrap: wrap;
+}
+
+.branches-navi {
+    margin: 32px;
+}
+
+.branch-view-container {
+    margin: auto;
+    padding: 36px;
+    text-align: center;
+    width: 43vw;
+}
+
+.branch-view-container-sm {
+    margin: auto;
+    width: 100vw !important;
+    padding: 36px 4px;
+}
+
+
+.list-action {
+    margin-top: 30px;
+    min-width: 20px;
+    min-height: 20px;
+    background-color: black;
+    color: white;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    border-radius: 7px;
+    font-size: 12px;
+    cursor: pointer;
+    padding: 4px 8px;
+    letter-spacing: 1.2px;
+    word-spacing: 3px;
+    font-weight: normal;
+}
+
+.list-action-dark {
+    background-color: white;
+    color: black;
+}
+
+
+
+/* Inline #23 | http://localhost:3000/6016dddd378d0bc5d5bea020 */
+
+.fc-actions {
+    display: flex;
+    justify-content: flex-end;
+    width: 100vw;
+}
+
+.fc-action-cont {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    color: #990404;
+    cursor: pointer;
+}
+
+.fc-actions {
+    background-color: gray;
+}
+
+
+
+/* Inline #23 | http://localhost:3000/6016dddd378d0bc5d5bea020 */
+
+.fc-actions {
+    display: flex;
+    justify-content: flex-end;
+    width: 100vw;
+}
+
+.fc-action-cont {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+/* Inline #24 | http://localhost:3000/6016dddd378d0bc5d5bea020 */
+
+.fc-actions-light {
+    background-color: #e3e3e3;
+    ;
+}
+
+/* Inline #17 | http://localhost:3000/6016dddd378d0bc5d5bea020 */
+
+.quizlet {
+    /* background-color: #045a99; */
+    background-color: black;
+}
+
+/* Inline #25 | http://localhost:3000/6016dddd378d0bc5d5bea020 */
+
+.fc-actions-dark {
+    background-color: #1a1a1a;
+    ;
+}
+
+.fs-close-icon {
+    color: #9c2626;
+}
+
+
+
+/* Inline #23 | http://localhost:3000/6016dddd378d0bc5d5bea020 */
+
+.list-action-dark {
+    background-color: white;
+    color: black;
+}
+
+/* Inline #24 | http://localhost:3000/6016dddd378d0bc5d5bea020 */
+
+/* Inline #25 | http://localhost:3000/6016dddd378d0bc5d5bea020 */
+
+.list-branchesC {
+    max-width: 100vw;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+/* Inline #18 | http://localhost:3000/6016dddd378d0bc5d5bea020 */
+
+
+
+/* Inline #23 | http://localhost:3000/6016dddd378d0bc5d5bea020 */
+
+.list-action {
+    margin: 30px 16px;
+}
+
+.branch-list-header-actions {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.dir-controller {
+    margin: 30px;
+    font-size: 30px;
+    color: #385838;
+    cursor: pointer;
+}
+
+
+
+
+/* Inline #23 | http://localhost:3000/6038f56e38bf156b6d535d66 */
+
+.fc-name {
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 400px;
+}
+
+.fc-name-sm {
+    width: 300px;
+}
+
+.fc-name {
+    margin: auto;
+    background-color: #e3e3e3;
+    border-radius: 15px;
+    box-shadow: 1px 1px 3px #a4a4a4;
+}
+
+.fc-name-light {
+    color: #333;
+}
+
+.fc-name-dark {
+    background-color: #1a1a1a;
+    box-shadow: 1px 1px 3px black;
+}
+
+
+
+/* Inline #23 | http://localhost:3000/6038f56e38bf156b6d535d66 */
+
+.fc-content {
+    width: 300px;
+    max-height: 300px;
+    overflow: auto;
+    margin: 30px auto;
+    padding: 16px;
+    border-radius: 15px;
+}
+
+.fc-content-dark {
+    /* box-shadow: 1px 1\[; */
+    /* box-shadow: 1px 1\[x; */
+    /* box-shadow: 1px 1\[x aliceblue; */
+    background-color: #1a1a1a;
+    box-shadow: 1px 1px 3px black;
+}
+
+.fc-content-light {
+    background-color: #e3e3e3;
+    box-shadow: 1px 1px 3px gray;
+}
+
+
+/* Inline #24 | http://localhost:3001/60201a9c41061707a64657b9 */
+
+.link.branch-name {}
+
+.light-container {}
+
+/* Inline #25 | http://localhost:3001/6038f56e38bf156b6d535d66 */
+
+.link.branch-name.light-link {}
+
+.xEzOkLwAp64vOO2CGf-branch-container {
+    border-radius: 15px;
+}
+
+.xEzOkLwAp64vOO2CGf-branch-container-light {}
+
+.xEzOkLwAp64vOO2CGf-branch-container-dark {}
+
+/* Inline #26 | http://localhost:3001/6038f56e38bf156b6d535d66 */
+
+.xEzOkLwAp64vOO2CGf-branch-container-sm {
+    width: 80vw;
+    margin: auto;
+}
+
+.list {
+    margin: 16px;
+}
+
+.d1-list-item-sm {
+    width: 80vw;
+}
+
+/* Inline #7 | http://localhost:3000/nested/6037d3aa38bf156b6d535d24 */
+
+.d1-list-item-sm {
+    margin: auto;
+}
+
+
+.D1eV2TUEikjfnM {
+    border: 1px solid;
+    margin: 4px 8px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    letter-spacing: 1.3px;
+    outline: none;
+}
+
+
+/* Inline #30 | http://localhost:3000/6045eae4c07c381058e965e2 */
+
+.xEzOkLwAp64vOO2CGf-q2Qj {
+    padding: 8px;
+    box-shadow: 1px 1px 5px gray;
+}
+
+
+
+/* Inline #6 | http://localhost:3000/6045eae4c07c381058e965e2 */
+
+.xEzOkLwAp64vOO2CGf-songName1 {
+    /* font-size: 16px; */
+    font-size: 20px;
+    font-weight: bold;
+}
+
+/* Inline #5 | http://localhost:3000/6045eae4c07c381058e965e2 */
+
+.rhap_container {
+    background-color: #87313100 !important;
+    box-shadow: 0px 0px 0px !important;
+}
+
+
+.xEzOkLwAp64vOO2CGf-wrapper0 {
+    border: 1px solid;
+    margin: 16px;
+    border-radius: 15px;
+    padding: 8px;
+}
+
+.xEzOkLwAp64vOO2CGf-wrapper0-sm {
+    margin: 16px 0px;
+}
+
+.xEzOkLwAp64vOO2CGf-wrapper0-light {
+    background-color: #e3e3e3;
+}
+
+
+.xEzOkLwAp64vOO2CGf-wrapper1 {
+    text-align: left;
+    padding: 16px;
+    font-size: 16px;
+}
+
+
+
+
+
+.exMenuItem {
+    margin: 8px;
+    padding: 4px;
+}
+
+.pinToggler {
+    margin-left: 36px;
+    padding: 4px;
+}
+
+.posToggler {
+    margin-left: 36px;
+    padding: 4px;
+    cursor: pointer;
+}
+
+.pinToggler {
+    cursor: pointer;
+}

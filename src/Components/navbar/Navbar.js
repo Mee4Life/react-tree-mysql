@@ -93,7 +93,7 @@ function Navbar(props) {
                 <Brand p={p} />
                 {userController.token && userController.userCard &&
                     <div className="user-welcome" style={{ fontSize: 20 }}>
-                        welcome, <b>{userController.userCard.name.fname}</b>
+                        welcome, <b>{userController.userCard.fname}</b>
                     </div>
                 }
                 <div className={p.getCls('line-1')}>

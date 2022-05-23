@@ -25,14 +25,15 @@ function Login(props) {
             return
         }
         setProgress(true)
-        const url = p.apiBase + '/user/api/login'
+        const url = p.apiBase2 + '/users/login'
         const data = { email, password }
         postData(url, data)
             .then(res => {
                 // store login information on success login
                 if (res.token) {
                     localStorage.setItem('token', res.token);
-                    localStorage.setItem('userCard', JSON.stringify(res.userCard));
+                    // setting the usercard:
+                    localStorage.setItem('userCard', JSON.stringify({fname: data.fname, lname: data.lname, email: data.email}));
                     userController.setUserToken(res.token)
                     userController.setUserCard(res.userCard)
                 }

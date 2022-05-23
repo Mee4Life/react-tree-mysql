@@ -64,6 +64,7 @@ function Register(props) {
         postData(url, data)
             .then(res => {
                 if (res.msg) {
+                    // setting the usercard:
                     userController.setUserCard({fname: data.fname, lname: data.lname, email: data.email})
                     setSuccess(true)
                     setInProg(false)

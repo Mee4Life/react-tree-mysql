@@ -55,14 +55,16 @@ function App() {
 
   // get user status 
   useEffect(() => {
-    if (userController.token) {
+    if (token) {
       // check if it a valid token
       getWHeader(p.apiBase2 + '/users/status', { Authorization: userController.token })
         .then(d => {
-          if (!d.userCard) {
+          if (d.error) {
             // clean data from the local storage
-            userController.setUserToken(null)
-            userController.setUserCard(null)
+            setUserToken(null)
+            localStorage.removeItem('token')
+            setUserCard(null)
+            localStorage.removeItem('userCard')
             return
           }
           // update user card 

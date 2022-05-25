@@ -7,7 +7,7 @@ function BranchItem(props) {
 
     return (
         <div className={p.getCls('right-panel-branch-item')} >
-            <Link className={p.getCls('branch-item-name')} to={'/' + branch._id}>
+            <Link className={p.getCls('branch-item-name')} to={'/' + branch.id}>
                 {branch.name}
             </Link>
             {branch.origin &&

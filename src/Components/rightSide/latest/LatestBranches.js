@@ -10,9 +10,10 @@ function LatestBranches(props) {
     const [isReady, setReady] = useState(false)
     const [isVisi, setIsVisi] = useState(false)
     useEffect(() => {
-        const header = { token: p.token }
-        const url = p.apiBase + '/branch/latest?limit=300'
+        const header = { Authorization: p.token }
+        const url = p.apiBase2 + '/branches?latest=true'
         getReqHeader(url, header).then((d) => {
+            console.log('latest', d)
             // create temp arr
             const temp = []
             d.forEach(branch => {

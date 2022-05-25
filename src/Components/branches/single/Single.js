@@ -1,4 +1,5 @@
 import { React, useEffect, useState } from 'react'
+import axios from 'axios';
 import ReactEmbedGist from 'react-embed-gist';
 import ReactAudioPlayer from 'react-audio-player';
 import { Player } from 'video-react';
@@ -8,7 +9,7 @@ import Input1 from '../../Inputs/input1'
 
 import { Link } from 'react-router-dom'
 import './single.css'
-import { tokenGet, tokenPatch, tokenPost } from '../../../utils/functions';
+import { tokenGet, axiosTokenJsonHeader, tokenPatch, tokenPost } from '../../../utils/functions';
 function Single(props) {
     const { branch, isDark, apiBase, location, setData, setEdit, setBranch, selectedBranches, setSelected, p, counted, ex } = props
     const originTitle = ex.branchTitle
@@ -30,16 +31,24 @@ function Single(props) {
     const [nGroupName, setNGroupName] = useState('')
     // result groups 
     const [rGroups, setRGroups] = useState([])
+    // result groups 
+    const [rTags, setRTags] = useState([])
     // isLoading 
     const [selGroupLoading, setSelGroupLoading] = useState(true)
     // selected People
     const [sPeople, setSPeople] = useState([])
+    // selected tags
+    const [sTags, setSTags] = useState([])
     // new person name input
     const [nPersonName, setNPersonName] = useState('')
+    // new tag name input
+    const [nTagName, setNTagName] = useState('')
     // result people 
     const [rPeople, setRPeople] = useState([])
     // isLoading 
     const [selPeopleLoading, setSelPeopleLoading] = useState(true)
+    // isLoading 
+    const [selTagsLoading, setSelTagsLoading] = useState(true)
     // branch has children : 
     let hasChild = false
     if (branch && branch.children && branch.children.length > 0)
@@ -48,7 +57,7 @@ function Single(props) {
     useEffect(() => {
 
         // set selected groups
-        tokenPost(p.apiBase + '/group/many', { ids: branch.groups }, p.token)
+        tokenGet(p.apiBase2 + '/branches/branch-groups?id=' + branch.id, { Authorization: p.token })
             .then((d) => {
                 setSGroups(d)
                 setSelGroupLoading(false)
@@ -57,10 +66,19 @@ function Single(props) {
     }, [])
 
     useEffect(() => {
-        tokenPost(p.apiBase + '/person/many', { ids: branch.persons }, p.token)
+        tokenGet(p.apiBase2 + '/branches/branch-groups?id=' + branch.id, { Authorization: p.token })
             .then((d) => {
                 setSPeople(d)
                 setSelPeopleLoading(false)
+            })
+
+    }, [])
+
+    useEffect(() => {
+        tokenGet(p.apiBase2 + '/branches/branch-tags?id=' + branch.id, { Authorization: p.token })
+            .then((d) => {
+                setSTags(d)
+                setSelTagsLoading(false)
             })
 
     }, [])
@@ -176,10 +194,10 @@ function Single(props) {
                 {/* counter  */}
                 {p.numberedList && getCounter()}
                 {/* link */}
-                <Link to={"/" + branch._id} dangerouslySetInnerHTML={inner} className={`link branch-name ${isDark ? "dark-link" : "light-link"}`} style={{ direction: `${branchDir()}`, }}>
+                <Link to={"/" + branch.id} dangerouslySetInnerHTML={inner} className={`link branch-name ${isDark ? "dark-link" : "light-link"}`} style={{ direction: `${branchDir()}`, }}>
                 </Link>
                 {/* has child  */}
-                {hasChild &&<i onClick={branchesListToggleBranchMenu}  className="fas fa-ellipsis-h" style={{marginBottom: 4, fontSize: 10}}></i>}
+                {hasChild && <i onClick={branchesListToggleBranchMenu} className="fas fa-ellipsis-h" style={{ marginBottom: 4, fontSize: 10 }}></i>}
 
             </div>
         )
@@ -223,7 +241,7 @@ function Single(props) {
         console.log(originTitle);
         return (
             <div className={getCls('zhwiWnUPj')}>
-                {  branch.extra && branch.extra.songName &&
+                {branch.extra && branch.extra.songName &&
                     <div className={getCls('songName1')}>
                         {branch.extra.songName} - {getOriginName()}
                     </div>
@@ -310,16 +328,33 @@ function Single(props) {
     }
 
     const togglePinAPI = () => {
-        tokenGet(p.apiBase + '/branch/tPinned?id=' + branch._id, { token: p.token }).then((d) => {
-            setIsPinned(d.pinned)
-            sendSuccess('pinned : ' + d.pinned)
-        })
+        if (isPinned == 1) {
+            axios.patch(p.apiBase2 + '/branches', { id: branch.id, pinned: 0 }, axiosTokenJsonHeader(p.token)).then(e => {
+                sendSuccess('pinned : false')
+                setIsPinned(0)
+            }).catch(e => console.log(e))
+        }
+        else if (isPinned == 0) {
+            axios.patch(p.apiBase2 + '/branches', { id: branch.id, pinned: 1 }, axiosTokenJsonHeader(p.token)).then(e => {
+                sendSuccess('pinned : true')
+                setIsPinned(1)
+            }).catch(e => console.log(e))
+        }
     }
     const togglePosAPI = () => {
-        tokenGet(p.apiBase + '/branch/positive?id=' + branch._id, { token: p.token }).then((d) => {
-            setIsPositive(d.positive)
-            sendSuccess('positive : ' + d.positive)
-        })
+        if (isPositive == 1) {
+            axios.patch(p.apiBase2 + '/branches', { id: branch.id, positive: 0 }, axiosTokenJsonHeader(p.token)).then(e => {
+                sendSuccess('positive : false')
+                setIsPositive(0)
+            }).catch(e => console.log(e))
+        }
+        else if (isPositive == 0) {
+            axios.patch(p.apiBase2 + '/branches', { id: branch.id, positive: 1 }, axiosTokenJsonHeader(p.token)).then(e => {
+                sendSuccess('positive : true')
+                setIsPositive(1)
+            }).catch(e => console.log(e))
+        }
+
     }
 
     const getPinned = () => {
@@ -429,7 +464,7 @@ function Single(props) {
     }
 
     const saveNewName = () => {
-        tokenPatch(p.apiBase + '/branch', { id: branch._id, name: nBranchName }, p.token).then((d) => {
+        tokenPatch(p.apiBase2 + '/branches', { id: branch.id, name: nBranchName }, p.token).then((d) => {
             branch.name = d.name
             sendSuccess('Name Changed')
         })
@@ -437,15 +472,34 @@ function Single(props) {
 
     function toggleGroup(group) {
         // remove group from the branch 
-        tokenPost(p.apiBase + '/branch/toggleGroup', { id: branch._id, group: group._id }, p.token).then((d) => {
-            setSGroups(d.groups)
+        // todo change base and the posted data
+        tokenPost(p.apiBase2 + '/branches/toggle-group', { branchID: branch.id, groupID: group.id }, p.token).then((d) => {
+            // set selected groups
+            tokenGet(p.apiBase2 + '/branches/branch-groups?id=' + branch.id, { Authorization: p.token })
+                .then((d) => {
+                    setSGroups(d)
+                    setSelGroupLoading(false)
+                })
         })
     }
     function togglePerson(person) {
         // remove group from the branch 
-        tokenPost(p.apiBase + '/branch/togglePerson', { id: branch._id, person: person._id }, p.token).then((d) => {
-            console.log(d);
-            setSPeople(d.persons)
+        tokenPost(p.apiBase2 + '/branches/toggle-person', { branchID: branch.id, personID: person.id }, p.token).then((d) => {
+            // set selected people
+            tokenGet(p.apiBase2 + '/branches/branch-people?id=' + branch.id, { Authorization: p.token })
+                .then((d) => {
+                    setSPeople(d)
+                })
+        })
+    }
+    function toggleTag(tag) {
+        // remove tag from the branch 
+        tokenPost(p.apiBase2 + '/branches/toggle-tag', { branchID: branch.id, tagID: tag.id }, p.token).then((d) => {
+            // set selected people
+            tokenGet(p.apiBase2 + '/branches/branch-tags?id=' + branch.id, { Authorization: p.token })
+                .then((d) => {
+                    setSTags(d)
+                })
         })
     }
 
@@ -455,12 +509,31 @@ function Single(props) {
                 {!selGroupLoading && <div>
                     {sGroups.map(group => (
                         <div
-                            key={group._id}
+                            key={group.id}
                             className={getCls('group0')}
                             onClick={() => { toggleGroup(group) }}
                         >
                             <span className={getCls('v04TWL')}><i className="fas fa-check"></i></span>
                             <span className='grGP'>{group.name}</span>
+                        </div>
+                    ))}
+                </div>}
+
+            </div>
+        )
+    }
+    function getSelectedTags() {
+        return (
+            <div className={getCls('selectedTags')}>
+                {!selTagsLoading && <div>
+                    {sTags.map(tag => (
+                        <div
+                            key={tag.id}
+                            className={getCls('group0')}
+                            onClick={() => { toggleTag(tag) }}
+                        >
+                            <span className={getCls('v04TWL')}><i className="fas fa-check"></i></span>
+                            <span className='grGP'>{tag.name}</span>
                         </div>
                     ))}
                 </div>}
@@ -493,16 +566,23 @@ function Single(props) {
         const val = e.target.value
         setNGroupName(val)
         // get all groups from the db .
-        tokenGet(p.apiBase + '/group/search?q=' + val, { token: p.token }).then((d) => {
+        tokenGet(p.apiBase2 + '/groups/search?q=' + val, { Authorization: p.token }).then((d) => {
             setRGroups(d)
-            console.log(d)
+        })
+    }
+    function tagEditChange(e) {
+        const val = e.target.value
+        setNTagName(val)
+        // get all tags from the db .
+        tokenGet(p.apiBase2 + '/tags/search?q=' + val, { Authorization: p.token }).then((d) => {
+            setRTags(d)
         })
     }
     function personEditChange(e) {
         const val = e.target.value
         setNPersonName(val)
         // get all groups from the db .
-        tokenGet(p.apiBase + '/person/search?q=' + val, { token: p.token }).then((d) => {
+        tokenGet(p.apiBase2 + '/people/search?q=' + val, { Authorization: p.token }).then((d) => {
             setRPeople(d)
         })
     }
@@ -511,24 +591,27 @@ function Single(props) {
         // toggle group to branch 
         toggleGroup(group)
     }
+    function handleNewTag(tag) {
+        // toggle group to branch 
+        toggleTag(tag)
+    }
     function handleNewPerson(person) {
         // toggle group to branch
         togglePerson(person)
     }
 
     function handleNewInputGroup() {
-        tokenPost(p.apiBase + '/group', { name: nGroupName }, p.token).then((d) => {
-            const temp = sGroups
-            temp.push(d)
-            setSGroups(temp)
+        tokenPost(p.apiBase2 + '/groups', { name: nGroupName }, p.token).then((d) => {
         }
         )
     }
     function handleNewInputPerson() {
-        tokenPost(p.apiBase + '/person', { fname: nPersonName }, p.token).then((d) => {
-            const temp = sPeople
-            temp.push(d)
-            setSPeople(temp)
+        tokenPost(p.apiBase2 + '/people', { fname: nPersonName }, p.token).then((d) => {
+        }
+        )
+    }
+    function handleNewInputTag() {
+        tokenPost(p.apiBase2 + '/tags', { name: nTagName }, p.token).then((d) => {
         }
         )
     }
@@ -544,8 +627,27 @@ function Single(props) {
                 {/* result container */}
                 <div className={getCls('result')}>
                     {rGroups && rGroups.length > 0 && rGroups.map(g => (
-                        <div key={g._id} className='GV' onClick={() => { handleNewGroup(g) }}>
+                        <div key={g.id} className='GV' onClick={() => { handleNewGroup(g) }}>
                             {g.name}
+                        </div>
+                    ))}
+                </div>
+            </div>
+        )
+    }
+    function getInputTags() {
+        return (
+            <div className={getCls('kdW3')}>
+                {/* input form */}
+                <div className={getCls('form')}>
+                    <Input1 value={nTagName} placeholder='tag name' type='text' onChange={(e) => { tagEditChange(e) }} />
+                    <span className={getCls('lRb4')} onClick={handleNewInputTag}>New</span>
+                </div>
+                {/* result container */}
+                <div className={getCls('result')}>
+                    {rTags && rTags.length > 0 && rTags.map(t => (
+                        <div key={t.id} className='GV' onClick={() => { handleNewTag(t) }}>
+                            {t.name}
                         </div>
                     ))}
                 </div>
@@ -579,6 +681,15 @@ function Single(props) {
             <div className={getCls('OcnAq')}>
                 {getSelectedGroups()}
                 {getInputGroups()}
+            </div>
+        )
+    }
+    function getTagsSection() {
+        // selected tags section
+        return (
+            <div className={getCls('OcnAq')}>
+                {getSelectedTags()}
+                {getInputTags()}
             </div>
         )
     }
@@ -656,6 +767,10 @@ function Single(props) {
                 <div className={getCls('people')}>
                     <span><b>People</b></span>
                     {getPeopleSection()}
+                </div>
+                <div className={getCls('tags')}>
+                    <span><b>Tags</b></span>
+                    {getTagsSection()}
                 </div>
                 {/* TODO Groups Tags and People */}
             </div>

@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom'
 import RightPanel from '../rightSide/RightPanel'
 import FlashCard from './FlashCard'
 import Quizlet from './Quizlet'
-import { tokenPatch, AsyncForEach, tokenGet, date1 } from '../../utils/functions'
+import { tokenPatch, AsyncForEach, tokenGet, date1, axiosTokenHeader } from '../../utils/functions'
+import axios from 'axios'
 
 function BranchView(props) {
-    const { isDark, data, apiBase, setUpToDate, fontSize, p } = props
+    const { isDark, data, apiBase, setUpToDate, fontSize, p, branch } = props
     let { ex } = props
     const { getCls } = p
     const { freshBranches } = ex
@@ -18,14 +19,15 @@ function BranchView(props) {
     const [isQuizlet, setIsQuizlet] = useState(false)
     const [isAction, setIsAction] = useState(false)
     const [parents, setParent] = useState([])
+    const [origin, setOrigin] = useState(false)
     let branchTitle = []
-    if (data && data.name)
-        branchTitle = data.name.split('\n')
+    if (branch && branch.name)
+        branchTitle = branch.name.split('\n')
 
 
     const createDate = () => {
-        if (!data || !data.createdAt) return ''
-        const date = new Date(data.createdAt)
+        if (!branch || !branch.created_at) return ''
+        const date = new Date(branch.created_at)
         const typed = date1(date)
         return typed
 
@@ -47,11 +49,11 @@ function BranchView(props) {
     const bOrigin = () => {
         return (
             <div className={getCls('BNBKece')}>
-                {data.origin &&
-                    <Link to={"/" + data.origin._id} className={`link ${isDark ? "dark-link" : "light-link"}`}>{data.origin.name}</Link>
+                {origin &&
+                    <Link to={"/" + origin.id} className={`link ${isDark ? "dark-link" : "light-link"}`}>{origin.name}</Link>
                 }
 
-                {!data.origin &&
+                {!origin &&
                     <Link to={"/"} className={`link ${isDark ? "dark-link" : "light-link"}`}><i className="fas fa-home"></i></Link>
 
                 }
@@ -112,12 +114,12 @@ function BranchView(props) {
 
                 {
                     data.children &&
-                    <List branches={data.children} isDark={isDark} location={data._id} apiBase={apiBase} setUpToDate={setUpToDate} fontSize={fontSize} p={p} ex={ex} />
+                    <List branches={data.children} isDark={isDark} location={data.id} apiBase={apiBase} setUpToDate={setUpToDate} fontSize={fontSize} p={p} ex={ex} />
                 }
 
                 {
                     !data.children &&
-                    <List branches={data} isDark={isDark} location={data._id} apiBase={apiBase} setUpToDate={setUpToDate} fontSize={fontSize} p={p} ex={ex} />
+                    <List branches={data} isDark={isDark} location={data.id} apiBase={apiBase} setUpToDate={setUpToDate} fontSize={fontSize} p={p} ex={ex} />
                 }
             </div>
         )

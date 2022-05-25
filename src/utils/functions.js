@@ -8,6 +8,24 @@ export function getID(length) {
     return result;
 }
 
+export function axiosTokenJsonHeader(token) {
+    let config = {
+        headers: {
+            Authorization: token,
+            "Content-Type": "application/json"
+        }
+    }
+    return config
+}
+export function axiosTokenHeader(token) {
+    let config = {
+        headers: {
+            Authorization: token
+        }
+    }
+    return config
+}
+
 export function getSpinner() {
     return <i className="fas fa-spinner spinner"></i>
 }
@@ -45,7 +63,7 @@ export async function tokenPost(url = '', data = {}, token) {
         credentials: 'same-origin', // include, *same-origin, omit
         headers: {
             'Content-Type': 'application/json',
-            'token': token
+            'Authorization': token
             // 'Content-Type': 'application/x-www-form-urlencoded',
         },
         redirect: 'follow', // manual, *follow, error
@@ -64,7 +82,7 @@ export async function tokenPatch(url = '', data = {}, token) {
         credentials: 'same-origin', // include, *same-origin, omit
         headers: {
             'Content-Type': 'application/json',
-            'token': token
+            'Authorization': token
             // 'Content-Type': 'application/x-www-form-urlencoded',
         },
         redirect: 'follow', // manual, *follow, error
@@ -130,8 +148,8 @@ export function date1(date) {
 
     return (
         <div className="qC8tN"><div className='XWusL-date'>
-            <span className='qC8tN-'>{month}</span>
             <span className='qC8tN-'>{day}</span>
+            <span className='qC8tN-'>{month}</span>
             <span className='qC8tN-'>{year}</span>
         </div>
             <div className='XWusL-time'>

@@ -28,7 +28,7 @@ function List(props) {
                 <div className={getCls('branchesC') + " branches-container"} style={{ fontSize: fontSize }}>
 
                     {branches.map(branch => (
-                        <Single key={branch._id} branch={branch} isDark={isDark} apiBase={apiBase} location={location} setData={setUpToDate} setEdit={setEdit} setBranch={setBranchToEdit} selectedBranches={sBranches} setSelected={setSBranches} p={p} counted={++counted} ex={ex} />
+                        <Single key={branch.id} branch={branch} isDark={isDark} apiBase={apiBase} location={location} setData={setUpToDate} setEdit={setEdit} setBranch={setBranchToEdit} selectedBranches={sBranches} setSelected={setSBranches} p={p} counted={++counted} ex={ex} />
                     ))}
                 </div>
                 {/* <Navi apiBase={apiBase} handleMove={handleMove} resMsg={resMsg} setResMsg={setResMsg} /> */}

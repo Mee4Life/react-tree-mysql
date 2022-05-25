@@ -57,9 +57,9 @@ function App() {
   useEffect(() => {
     if (userController.token) {
       // check if it a valid token
-      getWHeader(p.apiBase + '/user/api/protected', { token: userController.token })
+      getWHeader(p.apiBase2 + '/users/status', { Authorization: userController.token })
         .then(d => {
-          if (!d.passed) {
+          if (!d.userCard) {
             // clean data from the local storage
             userController.setUserToken(null)
             userController.setUserCard(null)

@@ -16,10 +16,9 @@ function List(props) {
 
     // get branches
     useEffect(() => {
-        const url = p.apiBase + '/tag/search?q=' + ex.newTName
-        tokenGet(url, { token: p.token })
+        const url = p.apiBase2 + '/tags/search?q=' + ex.newTName
+        tokenGet(url, { Authorization: p.token })
             .then((d) => {
-                console.log(d)
                 ex.setRTags(d)
             })
         return () => {
@@ -33,7 +32,7 @@ function List(props) {
             {!loading &&
                 <div className={getCls('container')}>
                     {rTags.map((tag) => (
-                        <Item p={p} ex={ex} tag={tag} key={tag._id} />
+                        <Item p={p} ex={ex} tag={tag} key={tag.id} />
                     ))}
                 </div>
             }

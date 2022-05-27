@@ -13,7 +13,7 @@ function Item(props) {
 
     const isChecked = () => {
         const temp = seGroups.filter((d) => {
-            return d === group._id.toString()
+            return d == group.id
         })
         console.log(temp);
         return temp.length > 0
@@ -23,7 +23,7 @@ function Item(props) {
         if(isChecked()){
             // remove item from arr
             const t = seGroups.filter((d) => {
-                return d !== group._id
+                return d !== group.id
             })
             setSeGroups(t)
             setSe(false)
@@ -31,7 +31,7 @@ function Item(props) {
         }else{
             // add item to arr
             const t = seGroups
-            t.push(group._id)
+            t.push(group.id)
             setSeGroups(t)
             setSe(true)
         }

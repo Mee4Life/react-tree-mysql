@@ -13,9 +13,8 @@ function Item(props) {
 
     const isChecked = () => {
         const temp = seTags.filter((d) => {
-            return d === tag._id.toString()
+            return d == tag.id
         })
-        console.log(temp);
         return temp.length > 0
     }
 
@@ -23,7 +22,7 @@ function Item(props) {
         if(isChecked()){
             // remove item from arr
             const t = seTags.filter((d) => {
-                return d !== tag._id
+                return d !== tag.id
             })
             setSeTags(t)
             setSe(false)
@@ -31,7 +30,7 @@ function Item(props) {
         }else{
             // add item to arr
             const t = seTags
-            t.push(tag._id)
+            t.push(tag.id)
             setSeTags(t)
             setSe(true)
         }

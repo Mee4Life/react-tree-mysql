@@ -17,7 +17,7 @@ function Input(props) {
 
     const newGClick = () => {
         setLoading(true)
-        tokenPost(p.apiBase + '/person', { fname: newGName }, p.token)
+        tokenPost(p.apiBase2 + '/people', { fname: newGName }, p.token)
             .then((d) => {
                 setLoading(false)
             })

@@ -19,7 +19,7 @@ function Input(props) {
 
     const newGClick = () => {
         setLoading(true)
-        tokenPost(p.apiBase + '/group', { name: newGName }, p.token)
+        tokenPost(p.apiBase2 + '/groups', { name: newGName }, p.token)
             .then((d) => {
                 setLoading(false)
             })

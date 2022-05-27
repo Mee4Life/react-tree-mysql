@@ -16,10 +16,12 @@ function List(props) {
 
 
     useEffect(() => {
-        const url = p.apiBase + '/group/search?q=' + ex.newGName
-        tokenGet(url, { token: p.token })
+        let url
+        if(ex.newGName)
+        url = p.apiBase2 + '/groups/search?q=' + ex.newGName
+        else url = p.apiBase2 + '/groups/search?q='
+        tokenGet(url, { Authorization: p.token })
             .then((d) => {
-                console.log(d)
                 setRGroups(d)
             })
         return () => {
@@ -32,7 +34,7 @@ function List(props) {
             {!loading &&
                 <div className={getCls('container')}>
                     {rGroups.map((group) => (
-                        <Item p={p} ex={ex} group={group} key={group._id} />
+                        <Item p={p} ex={ex} group={group} key={group.id} />
                     ))}
                 </div>
             }

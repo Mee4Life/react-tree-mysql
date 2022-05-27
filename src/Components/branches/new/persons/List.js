@@ -16,10 +16,9 @@ function List(props) {
 
     // get branches
     useEffect(() => {
-        const url = p.apiBase + '/person/search?q=' + ex.newGName
-        tokenGet(url, { token: p.token })
+        const url = p.apiBase2 + '/people/search?q=' + ex.newGName
+        tokenGet(url, { Authorization: p.token })
             .then((d) => {
-                console.log(d)
                 setRPersons(d)
             })
         return () => {
@@ -33,7 +32,7 @@ function List(props) {
             {!loading &&
                 <div className={getCls('container')}>
                     {rPersons.map((person) => (
-                        <Item p={p} ex={ex} person={person} key={person._id} />
+                        <Item p={p} ex={ex} person={person} key={person.id} />
                     ))}
                 </div>
             }

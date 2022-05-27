@@ -17,7 +17,7 @@ function Input(props) {
 
     const newTClick = () => {
         setLoading(true)
-        tokenPost(p.apiBase + '/tag', { name: newTName }, p.token)
+        tokenPost(p.apiBase2 + '/tags', { name: newTName }, p.token)
             .then((d) => {
                 setLoading(false)
             })

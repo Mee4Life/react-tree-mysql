@@ -17,9 +17,8 @@ function Item(props) {
     const isChecked = () => {
         if(!sePersons) return false
         const temp = sePersons.filter((d) => {
-            return d === person._id.toString()
+            return d == person.id
         })
-        console.log(temp);
         return temp.length > 0
     }
 
@@ -27,7 +26,7 @@ function Item(props) {
         if(isChecked()){
             // remove item from arr
             const t = sePersons.filter((d) => {
-                return d !== person._id
+                return d !== person.id
             })
             setSePersons(t)
             setSe(false)
@@ -35,7 +34,7 @@ function Item(props) {
         }else{
             // add item to arr
             const t = sePersons
-            t.push(person._id)
+            t.push(person.id)
             setSePersons(t)
             setSe(true)
         }

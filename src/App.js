@@ -42,7 +42,7 @@ function App() {
   const [fontSize, setFontSize] = useState(getFontSize())
   const [branchMargin, setBranchMargin] = useState(16)
   const [apiBase] = useState('http://3.120.11.152:8863') //3.120.11.152 localhost
-  const [apiBase2] = useState('http://localhost:3000') //3.120.11.152 localhost
+  const [apiBase2] = useState('http://3.120.11.152:3000') //3.120.11.152 localhost
   const { height, width } = useWindowDimensions();
   const [isVisibleNav, setVisibleNav] = useState(false)
   const [listAlign, setListAlign] = useState('center')

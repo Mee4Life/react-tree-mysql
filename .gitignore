@@ -6,7 +6,6 @@ package-lock.json
 
 python.py
 # dependencies
-/node_modules
 /.pnp
 .pnp.js
 .eslintcache

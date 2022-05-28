@@ -18,7 +18,7 @@ function GroupItem(props) {
 
     // functions 
     const handleSave = () => {
-        tokenPatch(p.apiBase + '/group', { id: group._id, name: eName }, p.token)
+        tokenPatch(p.apiBase2 + '/groups', { id: group.id, name: eName }, p.token)
             .then((d) => {
                 setIsChanged(true)
                 setTimeout(() => {
@@ -51,7 +51,7 @@ function GroupItem(props) {
 
     // remove function. 
     const handleRemove = () => {
-        tokenDelete(p.apiBase + '/group?id=' + group._id, p.token)
+        tokenDelete(p.apiBase2 + '/groups?id=' + group.id, p.token)
             .then((d) => {
                 setIsRemoved(true)
                 setRemoveMsg(true)
@@ -95,7 +95,7 @@ function GroupItem(props) {
                         {/* link */}
                         <Link
                             className={getCls('action') + ''}
-                            to={'/group/' + group._id}>
+                            to={'/group/' + group.id}>
                             <i className="fas fa-book-open"></i>
                         </Link>
                         {/* remove icon */}

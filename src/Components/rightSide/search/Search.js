@@ -33,28 +33,23 @@ function BranchSearch(props) {
     const handleSearch = (e) => {
         const v = e.target.value
         // check q
-        if (e.target.value.trim().length <= 0) {
+        if (!v || v.trim().length <= 0) {
             // clean response. 
             setRes(null)
             return
         }
-        // check command search . 
-        if(v[0] === '#'){
-            handleCommandSearch(v.replace('#', ''))
-            return
-        }
         // set url from state on input text changed
-        let url = p.apiBase + '/branch/search?q=' + q
+        let url = p.apiBase2 + '/branches/search?q=' + q
         if (e) {
             // set state
             setQ(e.target.value)
             // set url from the input text 
-            url = p.apiBase + '/branch/search?q=' + e.target.value
+            url = p.apiBase2 + '/branches/search?q=' + e.target.value
         }
         // set prog
         setProg(true)
         // send request
-        getReqHeader(url, { token: p.token }).then((d) => {
+        getReqHeader(url, { Authorization: p.token }).then((d) => {
             // set response
             setRes(null)
             setRes(d)

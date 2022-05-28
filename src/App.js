@@ -118,7 +118,7 @@ function App() {
             <HTMLV p={p} />
           </Route>
 
-          <Route exact path="/person/:id">
+          <Route exact path="/people/:id">
             {token && <PersonView p={p} />}
             {!token && get404()}
           </Route>

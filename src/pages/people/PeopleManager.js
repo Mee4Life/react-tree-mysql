@@ -29,7 +29,7 @@ function PeopleView(props) {
     const [isPending, setIsPending] = useState(true)
 
     useEffect(() => {
-        tokenGet(p.apiBase + '/person', { token: p.token }).then((d) => {
+        tokenGet(p.apiBase2 + '/people', { Authorization: p.token }).then((d) => {
             setRGroups(d)
             setFilteredPeople(d)
             setIsPending(false)
@@ -56,7 +56,7 @@ function PeopleView(props) {
                 {/* list */}
                 <div className={getCls('CJ')}>
                     {filteredPeople.map(group => (
-                        <GroupItem key={group._id} p={p} group={group} />
+                        <GroupItem key={group.id} p={p} group={group} />
                     ))}
                 </div>
             </div>}

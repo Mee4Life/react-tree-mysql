@@ -104,7 +104,7 @@ function New(props) {
             // fetch new branches . 
             let url
             typeof (BranchLocation) === 'number' ?
-                url = p.apiBase2 + '/branches/nested?id=' + BranchLocation :
+                url = p.apiBase2 + '/branches/nested?id=' + BranchLocation + '&ordered=true' :
                 url = p.apiBase2 + '/branches/root'
 
             tokenGet(url, { Authorization: p.token }).then(e => {

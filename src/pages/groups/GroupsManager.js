@@ -27,7 +27,7 @@ function GroupsManager(props) {
     const [isPending, setIsPending] = useState(true)
 
     useEffect(() => {
-        tokenGet(p.apiBase + '/group', { token: p.token }).then((d) => {
+        tokenGet(p.apiBase2 + '/groups', { Authorization: p.token }).then((d) => {
             setRGroups(d)
             setFilteredGroups(d)
             setIsPending(false)
@@ -54,7 +54,7 @@ function GroupsManager(props) {
                 {/* list */}
                 <div className={getCls('CJ')}>
                     {filteredGroups.map(group => (
-                        <GroupItem key={group._id} p={p} group={group} />
+                        <GroupItem key={group.id} p={p} group={group} />
                     ))}
                 </div>
             </div>}

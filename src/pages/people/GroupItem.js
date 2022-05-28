@@ -18,7 +18,7 @@ function GroupItem(props) {
 
     // functions 
     const handleSave = () => {
-        tokenPatch(p.apiBase + '/person', { id: group._id, fname: eName }, p.token)
+        tokenPatch(p.apiBase2 + '/people', { id: group.id, fname: eName }, p.token)
             .then((d) => {
                 setIsChanged(true)
                 setTimeout(() => {
@@ -51,7 +51,7 @@ function GroupItem(props) {
 
     // remove function. 
     const handleRemove = () => {
-        tokenDelete(p.apiBase + '/person?id=' + group._id, p.token)
+        tokenDelete(p.apiBase2 + '/people?id=' + group.id, p.token)
             .then((d) => {
                 setIsRemoved(true)
                 setRemoveMsg(true)
@@ -67,13 +67,11 @@ function GroupItem(props) {
             <div className={getCls('infoSection')}>
                 {/* success re named info */}
                 <div className={getCls('0Y4HRb')}>
-                    {isChanged && getSuccessMsg('Name Changed Successfully. '
-                    )}
+                    {isChanged && getSuccessMsg('Name Changed Successfully.')}
                 </div>
                 {/* success re remove  */}
                 <div className={getCls('B7GB6')}>
-                    {isRemoveMsg && getWarringMsg('Tag Deleted . '
-                    )}
+                    {isRemoveMsg && getWarringMsg('Tag Deleted .')}
                 </div>
             </div>
             {/* group item */}
@@ -95,7 +93,7 @@ function GroupItem(props) {
                         {/* link */}
                         <Link
                             className={getCls('action') + ' link-action'}
-                            to={'/person/' + group._id}>
+                            to={'/people/' + group.id}>
                             <i className="fas fa-book-open"></i>
                         </Link>
                         {/* remove icon */}

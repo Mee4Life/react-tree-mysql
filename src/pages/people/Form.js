@@ -11,9 +11,9 @@ function Form(props) {
     const [searchV, setSearchV] = useState('')
 
     const handleSave = () => {
-        tokenPost(p.apiBase + '/person', { fname: name }, p.token)
+        tokenPost(p.apiBase2 + '/people', { fname: name }, p.token)
             .then((d) => {
-                tokenGet(p.apiBase + '/person', { token: p.token })
+                tokenGet(p.apiBase2 + '/people', { Authorization: p.token })
                     .then((d) => {
                         ex.setRGroups(d)
                     })

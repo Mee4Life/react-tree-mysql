@@ -29,7 +29,7 @@ function TagManager(props) {
     const [isPending, setIsPending] = useState(true)
 
     useEffect(() => {
-        tokenGet(p.apiBase + '/tag', { token: p.token }).then((d) => {
+        tokenGet(p.apiBase2 + '/tags', { Authorization: p.token }).then((d) => {
             setRGroups(d)
             setFiltered(d)
             setIsPending(false)

@@ -11,12 +11,13 @@ function Group(props) {
     const [vs, sVs] = useState(false)
     const [rGroups, setRGroups] = useState([])
     const [newGName, setNewGName] = useState(null)
-    
 
-    
-   ex = {...ex,
-    newGName, setNewGName, rGroups, setRGroups
-   }
+
+
+    ex = {
+        ...ex,
+        newGName, setNewGName, rGroups, setRGroups
+    }
     return (
         <div className={getCls('wrapper')}>
             <div className={getCls('title')}>

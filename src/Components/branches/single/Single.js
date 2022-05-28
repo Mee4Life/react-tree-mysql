@@ -130,14 +130,14 @@ function Single(props) {
 
     const handleBranchRemove = () => {
         setDeleting(true)
-        const url = p.apiBase2 + '/branches?id=' + branch.id 
+        const url = p.apiBase2 + '/branches?id=' + branch.id
         deleteFunc(url, p.token).then(e => {
             // fetch new branches . 
             let url
-            if (typeof(location) === 'number')
+            if (typeof (location) === 'number')
                 url = p.apiBase2 + '/branches/nested?id=' + location
             else url = p.apiBase2 + '/branches/root'
-            tokenGet(url, {Authorization: p.token}).then(e => {
+            tokenGet(url, { Authorization: p.token }).then(e => {
                 setData(e)
             })
         })

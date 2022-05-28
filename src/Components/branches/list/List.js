@@ -19,7 +19,7 @@ function List(props) {
 
     return (
         <div className="list">
-            
+
             {!isEdit &&
                 <New location={location} isDark={isDark} apiBase={apiBase} setUpToDate={setUpToDate} p={p} />
             }

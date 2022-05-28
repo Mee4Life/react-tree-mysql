@@ -45,12 +45,12 @@ function New(props) {
     }
 
     const cleanForm = () => {
-        if(branchType === 'sound'){
+        if (branchType === 'sound') {
             setSoundName('')
             setBranchName('')
         }
         const inp = document.getElementById('branchName')
-        inp? inp.innerHTML = '' : console.log('branch name is null')
+        inp ? inp.innerHTML = '' : console.log('branch name is null')
     }
 
     const submitClick = () => {
@@ -69,12 +69,12 @@ function New(props) {
 
         // check link type to append link name to the extra
         if (branchType === 'link') {
-            data['extra'] = JSON.stringify({name: linkName})
+            data['extra'] = JSON.stringify({ name: linkName })
         }
 
         // check if type Song is added to add Name 
         if (branchType === 'sound') {
-            data['extra'] = JSON.stringify({soundName: soundName})
+            data['extra'] = JSON.stringify({ soundName: soundName })
         }
 
 

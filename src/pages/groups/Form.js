@@ -16,6 +16,8 @@ function Form(props) {
                 tokenGet(p.apiBase2 + '/groups', { Authorization: p.token })
                     .then((d) => {
                         ex.setRGroups(d)
+                        ex.setFilteredGroups(d)
+                        setName('')
                     })
             })
     }

@@ -32,7 +32,7 @@ function Form(props) {
                 })
             return
         }
-        
+
         // get groups array rGroups, setRGroups
         const re = new RegExp(e.target.value, "ig")
         const ar1 = ex.rGroups.filter((d) => {

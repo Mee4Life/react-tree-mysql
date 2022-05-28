@@ -63,7 +63,7 @@ function TagManager(props) {
                     </div>
                 </div>
             }
-            {isPending && 
+            {isPending &&
                 <div className={getCls('xcKrrXdi')}>
                     {getSpinner()}
                 </div>

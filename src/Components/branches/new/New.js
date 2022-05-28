@@ -5,7 +5,7 @@ import Group from './groups/Group'
 import Person from './persons/Person'
 import Tag from './tags/Tag'
 import Input1 from '../../Inputs/input1'
-import {tokenPost} from '../../../utils/functions'
+import { tokenGet, tokenPost } from '../../../utils/functions'
 
 
 
@@ -19,8 +19,8 @@ function New(props) {
     const [branchType, setBranchType] = useState('text')
     const [linkName, setLinkName] = useState('')
     const [lang, setLang] = useState('ar')
-    const [pinned, setPinned] = useState(false)
-    const [pos, setPos] = useState(false)
+    const [pinned, setPinned] = useState(0)
+    const [pos, setPos] = useState(0)
     const [openedMenu, setOpenedMenu] = useState(false)
     const [seGroups, setSeGroups] = useState([])
     const [sePersons, setSePersons] = useState([])
@@ -45,60 +45,71 @@ function New(props) {
     }
 
     const cleanForm = () => {
+        if(branchType === 'sound'){
+            setSoundName('')
+            setBranchName('')
+        }
         const inp = document.getElementById('branchName')
-        inp.innerHTML = ''
+        inp? inp.innerHTML = '' : console.log('branch name is null')
     }
 
     const submitClick = () => {
-        // setNewBranchPending(true)
-        const url = apiBase + '/branch'
+        setNewBranchPending(true)
+        let url = p.apiBase2 + '/branches'
         const data = {
             name: branchName,
             type: branchType,
-            origin: BranchLocation,
+            parentID: BranchLocation,
             lang: lang,
-            groups: seGroups,
-            persons: sePersons,
-            tags: seTags,
             pinned: pinned,
             positive: pos
         }
 
+        if (BranchLocation.length <= 0) data.parentID = 0
 
         // check link type to append link name to the extra
         if (branchType === 'link') {
-            data['extra'] = {}
-            data.extra['name'] = linkName
+            data['extra'] = JSON.stringify({name: linkName})
         }
 
         // check if type Song is added to add Name 
-        if(branchType === 'sound'){
-            data['extra'] = {}
-            data.extra['songName'] = soundName
+        if (branchType === 'sound') {
+            data['extra'] = JSON.stringify({soundName: soundName})
         }
-    
+
 
         tokenPost(url, data, p.token).then(res => {
-            setNewBranchPending(false)
+            // toggle branch tags
+            seTags.forEach(tag => {
+                const url = p.apiBase2 + '/branches/toggle-tag'
+                tokenPost(url, { tagID: tag, branchID: res.id }, p.token)
+                    .then(e => console.log(e))
+                    .catch(r => { console.log(r) })
+            })
+            // toggel branch people
+            sePersons.forEach(person => {
+                const url = p.apiBase2 + '/branches/toggle-person'
+                tokenPost(url, { personID: person, branchID: res.id }, p.token)
+                    .then(e => console.log(e))
+                    .catch(r => { console.log(r) })
+            })
+            // toggle branch groups
+            seGroups.forEach(group => {
+                const url = p.apiBase2 + '/branches/toggle-group'
+                tokenPost(url, { groupID: group, branchID: res.id }, p.token)
+                    .then(e => console.log(e))
+                    .catch(r => { console.log(r) })
+            })
 
             // fetch new branches . 
             let url
-            BranchLocation.length > 0 ? url = apiBase + '/branch?id=' + BranchLocation : url = apiBase + '/branch'
-            fetch(url).then(d => {
-                return d.json()
-            }).then(e => {
-                if (BranchLocation.length > 0)
-                    setUpToDate(e)
-                else {
-                    // extract root branches : 
-                    // extract root branches : 
-                    const rootBranches = e.filter((b) => {
-                        return b.origin == null
-                    })
-                    setUpToDate(rootBranches)
+            typeof (BranchLocation) === 'number' ?
+                url = p.apiBase2 + '/branches/nested?id=' + BranchLocation :
+                url = p.apiBase2 + '/branches/root'
 
-                }
-                setBranchType('text')
+            tokenGet(url, { Authorization: p.token }).then(e => {
+                setUpToDate(e)
+                setNewBranchPending(false)
             })
 
         })
@@ -150,11 +161,11 @@ function New(props) {
         return (
             <div>
                 {/* title */}
-                <h2>Song</h2>
+                <h2>Sound</h2>
                 {/* link */}
-                <Input1 type="text" placeholder='Song Link' value={branchName} onChange={(e) => setBranchName(e.target.value)} />
+                <Input1 type="text" placeholder='sound Link' value={branchName} onChange={(e) => setBranchName(e.target.value)} />
                 {/* name */}
-                <Input1 placeholder="Song Name" type="text" value={soundName} onChange={(e)=> {setSoundName(e.target.value)}}/>
+                <Input1 placeholder="sound name" type="text" value={soundName} onChange={(e) => { setSoundName(e.target.value) }} />
                 {/* submit */}
                 <button type="submit" onClick={submitClick} className={`save-branch-btn ${isDark ? "save-branch-dark" : "save-branch-light"}`}>Save</button>
             </div>
@@ -197,18 +208,23 @@ function New(props) {
         setOpenedMenu(!openedMenu)
     }
 
+    const getPinPosValue = (oldValue) => {
+        if (oldValue == 1) return 0
+        else return 1
+    }
+
 
     const getPinnedPositive = () => {
 
         return (
             <div className={getCls('container')}>
-                <div className={getCls('pinned')} onClick={() => { setPinned(!pinned) }}>
-                    {!pinned && <i className="fas fa-ribbon"></i>}
-                    {pinned && <i className="fas fa-ribbon" style={{ color: 'green' }}></i>}
+                <div className={getCls('pinned')} onClick={() => { setPinned(getPinPosValue(pinned)) }}>
+                    {pinned == 0 && <i className="fas fa-ribbon"></i>}
+                    {pinned == 1 && <i className="fas fa-ribbon" style={{ color: 'green' }}></i>}
                 </div>
-                <div className={getCls('pos')} onClick={() => { setPos(!pos) }}>
-                    {!pos && <i className="far fa-minus-square"></i>}
-                    {pos && <i className="far fa-plus-square" style={{ color: 'green' }}></i>}
+                <div className={getCls('pos')} onClick={() => { setPos(getPinPosValue(pinned)) }}>
+                    {pos == 0 && <i className="far fa-minus-square"></i>}
+                    {pos == 1 && <i className="far fa-plus-square" style={{ color: 'green' }}></i>}
                 </div>
             </div>
         )
@@ -220,39 +236,39 @@ function New(props) {
     }
     return (
         <div className={getCls('W5DlnFPm77')}>
-        {p.navSts.isVisibleNav && <div className={p.getCls('new-section')}>
-            {openedMenu && <div onClick={toggleNew} className={getCls('closeNewIconContainer')}>
-                <i className="fas fa-times-circle closeNewIcon"></i>
-            </div>}{!openedMenu && <div onClick={toggleNew} className={getCls('NewIconContainer')}>
-                <i className="fas fa-plus-circle addNewIcon"></i>
-            </div>}
-            {openedMenu && <div className="new-branch-form">
-                <div className={`form-container ${isDark ? "dark-form-container" : "light-form-container"}`}>
-                    
-                    {!newBranchPending && expandNew && getSelectBranchType()}
+            {p.navSts.isVisibleNav && <div className={p.getCls('new-section')}>
+                {openedMenu && <div onClick={toggleNew} className={getCls('closeNewIconContainer')}>
+                    <i className="fas fa-times-circle closeNewIcon"></i>
+                </div>}{!openedMenu && <div onClick={toggleNew} className={getCls('NewIconContainer')}>
+                    <i className="fas fa-plus-circle addNewIcon"></i>
+                </div>}
+                {openedMenu && <div className="new-branch-form">
+                    <div className={`form-container ${isDark ? "dark-form-container" : "light-form-container"}`}>
+
+                        {!newBranchPending && expandNew && getSelectBranchType()}
 
 
-                    {!newBranchPending && branchType === 'text' && getTextInput('Branch')}
+                        {!newBranchPending && branchType === 'text' && getTextInput('Branch')}
 
 
-                    <div className={getCls('wN9ogkd4R')} >
-                        <span onClick={toggleExpandNew}><i className="far fa-caret-square-down"></i></span>
-                        {expandNew &&  <Group ex={ex} p={p} />}
-                        {expandNew && <Person ex={ex} p={p} />}
-                        {expandNew && <Tag ex={ex} p={p} />}
+                        <div className={getCls('wN9ogkd4R')} >
+                            <span onClick={toggleExpandNew}><i className="far fa-caret-square-down"></i></span>
+                            {expandNew && <Group ex={ex} p={p} />}
+                            {expandNew && <Person ex={ex} p={p} />}
+                            {expandNew && <Tag ex={ex} p={p} />}
+                        </div>
+                        {expandNew && getPinnedPositive()}
+
+                        {!newBranchPending && branchType === 'image' && getImageForm()}
+                        {!newBranchPending && branchType === 'link' && getLinkForm()}
+                        {!newBranchPending && branchType === 'video' && getTextInput('Video')}
+                        {!newBranchPending && branchType === 'youtube' && getTextInput('YouTube')}
+                        {!newBranchPending && branchType === 'sound' && getAudioInput()}
+                        {!newBranchPending && branchType === 'gist' && getTextInput('Gist')}
+                        {newBranchPending && getSpinner()}
                     </div>
-                    {expandNew && getPinnedPositive()}
-                    
-                    {!newBranchPending && branchType === 'image' && getImageForm()}
-                    {!newBranchPending && branchType === 'link' && getLinkForm()}
-                    {!newBranchPending && branchType === 'video' && getTextInput('Video')}
-                    {!newBranchPending && branchType === 'youtube' && getTextInput('YouTube')}
-                    {!newBranchPending && branchType === 'sound' && getAudioInput()}
-                    {!newBranchPending && branchType === 'gist' && getTextInput('Gist')}
-                    {newBranchPending && getSpinner()}
-                </div>
+                </div>}
             </div>}
-        </div>}
         </div>
     )
 }

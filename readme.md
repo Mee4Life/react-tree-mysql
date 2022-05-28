@@ -38,3 +38,8 @@ in this version we will work on this Features:
 - edit branch component rebuild 
   - Panel for each branch type
   - Quran Ayat Sora Panels.
+
+
+## todo mysql version:
+- verify youtube on new branch
+- verify gist on new branch

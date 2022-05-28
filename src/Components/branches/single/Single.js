@@ -66,7 +66,7 @@ function Single(props) {
     }, [])
 
     useEffect(() => {
-        tokenGet(p.apiBase2 + '/branches/branch-groups?id=' + branch.id, { Authorization: p.token })
+        tokenGet(p.apiBase2 + '/branches/branch-people?id=' + branch.id, { Authorization: p.token })
             .then((d) => {
                 setSPeople(d)
                 setSelPeopleLoading(false)
@@ -130,29 +130,15 @@ function Single(props) {
 
     const handleBranchRemove = () => {
         setDeleting(true)
-        const url = apiBase + '/branch?id=' + branch._id + '&complete=true'
-        deleteFunc(url).then(e => {
-            return e.json
-        }).then(e => {
+        const url = p.apiBase2 + '/branches?id=' + branch.id 
+        deleteFunc(url, p.token).then(e => {
             // fetch new branches . 
             let url
-            if (location && location.length)
-                url = apiBase + '/branch?id=' + location
-            else url = apiBase + '/branch'
-            fetch(url).then(d => {
-                return d.json()
-            }).then(e => {
-                if (location && location.length > 0)
-                    setData(e)
-                else {
-                    // extract root branches : 
-                    // extract root branches : 
-                    const rootBranches = e.filter((b) => {
-                        return b.origin == null
-                    })
-                    setData(rootBranches)
-
-                }
+            if (typeof(location) === 'number')
+                url = p.apiBase2 + '/branches/nested?id=' + location
+            else url = p.apiBase2 + '/branches/root'
+            tokenGet(url, {Authorization: p.token}).then(e => {
+                setData(e)
             })
         })
     }
@@ -241,9 +227,9 @@ function Single(props) {
         console.log(originTitle);
         return (
             <div className={getCls('zhwiWnUPj')}>
-                {branch.extra && branch.extra.songName &&
+                {branch.extra && branch.extra.soundName &&
                     <div className={getCls('songName1')}>
-                        {branch.extra.songName} - {getOriginName()}
+                        {branch.extra.soundName} - {getOriginName()}
                     </div>
                 }
             </div>
@@ -799,7 +785,7 @@ function Single(props) {
 }
 
 
-async function deleteFunc(url = '') {
+async function deleteFunc(url = '', token) {
     // Default options are marked with *
     const response = await fetch(url, {
         method: 'DELETE', // *GET, POST, PUT, DELETE, etc.
@@ -807,6 +793,9 @@ async function deleteFunc(url = '') {
         cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
         credentials: 'same-origin', // include, *same-origin, omit
         redirect: 'follow', // manual, *follow, error
+        headers: {
+            'Authorization': token
+        },
         referrerPolicy: 'no-referrer', // no-referrer, *no-referrer-when-downgrade, origin, origin-when-cross-origin, same-origin, strict-origin, strict-origin-when-cross-origin, unsafe-url
     });
     return response.json(); // parses JSON response into native JavaScript objects

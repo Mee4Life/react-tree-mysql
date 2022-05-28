@@ -114,12 +114,12 @@ function BranchView(props) {
 
                 {
                     data.children &&
-                    <List branches={data.children} isDark={isDark} location={data.id} apiBase={apiBase} setUpToDate={setUpToDate} fontSize={fontSize} p={p} ex={ex} />
+                    <List branches={data.children} isDark={isDark} location={branch.id} apiBase={apiBase} setUpToDate={setUpToDate} fontSize={fontSize} p={p} ex={ex} />
                 }
 
                 {
                     !data.children &&
-                    <List branches={data} isDark={isDark} location={data.id} apiBase={apiBase} setUpToDate={setUpToDate} fontSize={fontSize} p={p} ex={ex} />
+                    <List branches={data} isDark={isDark} location={branch.id} apiBase={apiBase} setUpToDate={setUpToDate} fontSize={fontSize} p={p} ex={ex} />
                 }
             </div>
         )

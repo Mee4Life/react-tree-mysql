@@ -18,7 +18,7 @@ function Register(props) {
         <div className="modal-wrapper">
             <div className="register-modal">
                 <div className="register-modal-header">
-                    <div className="register-modal-title">Me 4 Life &nbsp;|&nbsp;  Register</div>
+                    <div className="register-modal-title">Notes &nbsp;|&nbsp;  Register</div>
                     <span className='register-modal-close' onClick={() => p.setIsRegister(false)}><i className="fas fa-times"></i></span>
                 </div>
                 {!success &&

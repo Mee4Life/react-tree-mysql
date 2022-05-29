@@ -29,3 +29,4 @@ yarn-error.log*
 .eslintcache
 
 .vscode/
+node_modules/

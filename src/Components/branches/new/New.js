@@ -236,7 +236,7 @@ function New(props) {
     }
     return (
         <div className={getCls('W5DlnFPm77')}>
-            {p.navSts.isVisibleNav && <div className={p.getCls('new-section')}>
+            <div className={p.getCls('new-section')}>
                 {openedMenu && <div onClick={toggleNew} className={getCls('closeNewIconContainer')}>
                     <i className="fas fa-times-circle closeNewIcon"></i>
                 </div>}{!openedMenu && <div onClick={toggleNew} className={getCls('NewIconContainer')}>
@@ -268,7 +268,7 @@ function New(props) {
                         {newBranchPending && getSpinner()}
                     </div>
                 </div>}
-            </div>}
+            </div>
         </div>
     )
 }

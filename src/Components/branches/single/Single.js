@@ -273,7 +273,7 @@ function Single(props) {
     }
     const getLinkContent = () => {
         if (branch.extra && branch.extra.name) {
-            const e = <a href={branch.name} className={isDark ? 'dark-link' : 'light-link'}>{branch.extra.name}</a>
+            const e = <a href={branch.name} target="_blank" className={isDark ? 'dark-link' : 'light-link'}>{branch.extra.name}</a>
             return e
         }
 

@@ -52,11 +52,6 @@ function BranchView(props) {
                 {origin &&
                     <Link to={"/" + origin.id} className={`link ${isDark ? "dark-link" : "light-link"}`}>{origin.name}</Link>
                 }
-
-                {!origin &&
-                    <Link to={"/"} className={`link ${isDark ? "dark-link" : "light-link"}`}><i className="fas fa-home"></i></Link>
-
-                }
             </div>
         )
     }
@@ -91,11 +86,11 @@ function BranchView(props) {
                 <div className={getCls('parentW1')}>
                     <div className={getCls('U7q')}>
                         {parents.length > 0 && parents.map(parent => (
-                            <Link to={'/' + parent._id} key={parent._id} className={getCls('link') + ' VH9sY'}>
-                                <span className='mDCcQ'>/</span>
+                            <Link to={'/' + parent.id} key={parent.id} className={getCls('link') + ' VH9sY'}>
                                 <span className='JpN'>{parent.name}</span>
                             </Link>
                         ))}
+                        {parents.length === 0 && branch && <Link to={"/"} className={`link ${isDark ? "dark-link" : "light-link"}`}><i className="fas fa-home"></i></Link>}
                     </div>
                 </div>
 
@@ -145,11 +140,11 @@ function BranchView(props) {
     }
 
     useEffect(() => {
-        if (!data._id) return
-        tokenGet(p.apiBase + '/branch/pBranch?id=' + data._id)
+        if (!branch.parentID) return
+        tokenGet(p.apiBase2 + '/branches?id=' + branch.parentID, {Authorization: p.token})
             .then((d) => {
-                if (d.reason) return
-                setParent(d.reverse())
+                if(d.parentID === 0) setParent([]) 
+                else setParent([d])
             })
     }, [data])
 
